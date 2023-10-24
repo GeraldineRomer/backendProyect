@@ -20,6 +20,7 @@ mongoose
     })
     .then(() => {
         console.log("Conexión a la base de datos exitosa");
+        
         app.listen(PORT, () => {
             console.log("################");
             console.log("### API REST ###");
