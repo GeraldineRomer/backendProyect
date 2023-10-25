@@ -1,4 +1,4 @@
-const bcrypt = require("bcryptjs");
+/* const bcrypt = require("bcryptjs");
 const User = require("../Models/user");
 const jwt = require("../Utils/jwt");
 
@@ -94,3 +94,4 @@ module.exports = {
     login,
     refreshAccessToken
 };
+ */

@@ -1,4 +1,4 @@
-const express = require("express");
+/* const express = require("express");
 const AuthController = require("../Controllers/auth");
 
 const api = express.Router();
@@ -11,3 +11,4 @@ api.post("/refresh_access_token", AuthController.refreshAccessToken);
 module.exports = api;
 
 
+ */

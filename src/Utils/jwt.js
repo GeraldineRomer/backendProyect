@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken");
+/* const jwt = require("jsonwebtoken");
 const { JWT_SECRET_KEY } = require("../../constants");
 
 const createAccessToken = (user) => {
@@ -34,3 +34,4 @@ module.exports = {
     createRefreshToken,
     decoded,
 };
+ */
