@@ -1,6 +1,7 @@
-/* const jwt = require("jsonwebtoken");
-const { JWT_SECRET_KEY } = require("../../constants");
+const jwt = require("jsonwebtoken");
+const { JWT_SECRET_KEY } = require("../constants");
 
+//cada hora
 const createAccessToken = (user) => {
     const expToken = new Date();
     expToken.setHours(expToken.getHours() + 3);
@@ -13,6 +14,7 @@ const createAccessToken = (user) => {
     return jwt.sign(payload, JWT_SECRET_KEY);
 };
 
+//cada mes
 const createRefreshToken = (user) => {
     const expToken = new Date();
     expToken.getMonth(expToken.getMonth() + 1);
@@ -34,4 +36,4 @@ module.exports = {
     createRefreshToken,
     decoded,
 };
- */
+

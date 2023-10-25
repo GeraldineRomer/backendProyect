@@ -4,7 +4,7 @@ function getFilePath(file) {
 
     return `${fileSplit[1]}/${fileSplit[2]}`;
 }
-  
+
 module.exports = {
     getFilePath,
 };

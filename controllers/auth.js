@@ -1,6 +1,6 @@
-/* const bcrypt = require("bcryptjs");
-const User = require("../Models/user");
-const jwt = require("../Utils/jwt");
+const bcrypt = require("bcryptjs");
+const User = require("../models/user");
+const jwt = require("../utils/jwt");
 
 //registro de un usuario nuevo en el sistema
 const register = async (req, res) => {
@@ -21,6 +21,8 @@ const register = async (req, res) => {
 
     const salt = bcrypt.genSaltSync(10);
     const hashPassword = bcrypt.hashSync(password, salt);
+
+    //const hashPassword = await bcrypt.hash(password,salt);
 
     const user = new User({
         firstname,
@@ -92,6 +94,5 @@ async function refreshAccessToken(req, res){
 module.exports = {
     register,
     login,
-    refreshAccessToken
+    /* refreshAccessToken */
 };
- */

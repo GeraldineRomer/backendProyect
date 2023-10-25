@@ -1,4 +1,4 @@
-const DB_HOST = "cluster0.kz6wiwt.mongodb.net";
+const DB_HOST = "cluster0.ggpwz1q.mongodb.net";
 const DB_USER = "frontend";
 const DB_PASSWORD = "frontend";
 const DB_NAME = "frontend";
@@ -14,5 +14,5 @@ module.exports = {
     DB_USER,
     API_VERSION,
     IP_SERVER,
-    JWT_SECRET_KEY,
+    JWT_SECRET_KEY, 
 };

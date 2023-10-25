@@ -1,6 +1,5 @@
-const User = require("../Models/user");
+const User = require("../models/user");
 const bcrypt = require("bcryptjs");
-const image = require("../Utils/image");
 
 async function createUser(req, res) {
     try {
