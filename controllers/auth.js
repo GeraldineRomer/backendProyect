@@ -18,6 +18,7 @@ const register = async (req, res) => {
 
     if (!email) return res.status(400).send({ msg: "El email es requerido "});
     if (!password) return res.status(400).send({ msg: "La contraseña es requerida "});
+    if (!document) return res.status(400).send({ msg: "El documento es requerida "});
 
     const salt = bcrypt.genSaltSync(10);
     const hashPassword = bcrypt.hashSync(password, salt);
@@ -34,8 +35,7 @@ const register = async (req, res) => {
         document,
         email: email.toLowerCase(),
         password: hashPassword,
-        avatar,
-        role: "user",
+        role: "guess",
         active: false
     });
 
@@ -43,7 +43,7 @@ const register = async (req, res) => {
         const userStorage = await user.save();
         res.status(201).send(userStorage);
     } catch (error) {
-        res.status(400).send({ msg: "Error al crear el usuario "})
+        res.status(400).send({ msg: "Error al crear el usuario" + error});
     }
 };
 
@@ -51,8 +51,11 @@ const login = async (req, res) => {
     const {email, password} = req.body;
 
     try {
-        if (!email || !password){
-            throw new Error("El email y la contraseña son requeridos");
+        if (!password) {
+            throw new Error("la contraseña es obligatoria");
+        }
+        if(!email){
+            throw new Error("El email es obligatorio");
         }
         const emailLowerCase = email.toLowerCase();
         const userStore = await User.findOne({ email: emailLowerCase }).exec();
@@ -94,5 +97,5 @@ async function refreshAccessToken(req, res){
 module.exports = {
     register,
     login,
-    /* refreshAccessToken */
+    refreshAccessToken
 };

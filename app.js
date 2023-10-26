@@ -1,5 +1,5 @@
 const express = require('express');
-//const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 //const cors = require("cors");
 const app = express();
 
@@ -10,15 +10,16 @@ const authRoutes = require('./routes/auth');
 const userRoutes = require("./routes/user");
 
 //Configuramos bodyParser para que convierta el body de nuestras peticiones a JSON
-//app.use(bodyParser.json());
-//app.use(exp.urlencoded({extended:true}));
-app.use(express.json);
-app.use(express.urlencoded({ extended:true }));
+app.use(bodyParser.json());
+/* app.use(exp.urlencoded({extended:true})); */
+/* app.use(express.json);
+app.use(express.urlencoded({ extended:true })); */
 
 //evitar bloqueos con el navegador cuando se trabaje frontend y backend al tiempo
 //app.use(cors());
 console.log(`api/${API_VERSION}`);
 // Cargamos las rutas
-app.use(`/api/${API_VERSION}/auth`, authRoutes);
+app.use(`/api/${API_VERSION}`, authRoutes);
+app.use(`/api/${API_VERSION}`, userRoutes);
 // exportamos este módulo para poder usar la variable app fuera de este archivo
 module.exports = app;
