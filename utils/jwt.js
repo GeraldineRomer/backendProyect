@@ -28,7 +28,11 @@ const createRefreshToken = (user) => {
 };
 
 const decoded = (token) => {
-    return jwt.decoded(token, JWT_SECRET_KEY, true);
+    try {
+        return jwt.verify(token, JWT_SECRET_KEY);
+    } catch (error) {
+        return console.log(error);
+    }
 };
 
 module.exports = {

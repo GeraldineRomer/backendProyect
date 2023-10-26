@@ -79,13 +79,16 @@ const login = async (req, res) => {
 };
 
 async function refreshAccessToken(req, res){
+    const {token} = req.body;
+    if (!token){
+        return res.status(401).send({ msg: "Token requerido"});
+    }
     try {
-        const {token} = req.body;
-        if (!token){
-            return res.status(400).send({ msg: "Token requerido"});
-        }
         const { user_id } = jwt.decoded(token);
         const userStorage = await User.findOne({_id: user_id});
+        if (!userStorage) {
+            return res.status(404).send({ msg: "Usuario no encontrado" });
+        }
         const accessToken = jwt.createAccessToken(userStorage);
         return res.status(200).send({ accessToken });
     } catch (error) {

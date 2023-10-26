@@ -1,3 +1,4 @@
+const { login } = require("../controllers/auth");
 const jwt = require("../utils/jwt");
 
 const ensureAuth = (req,res,next) => {
@@ -7,6 +8,7 @@ const ensureAuth = (req,res,next) => {
         .send({msg: "La peticion no tiene la cabecera de autenticación"});
     }
     const token = req.headers.authorization.replace("Bearer ", "");
+    console.log("Entre a mid",token);
     try{
         const payload = jwt.decoded(token);
         const {exp} = payload;
